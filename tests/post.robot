@@ -11,25 +11,11 @@ Should create a new partner
     ...                email=pizzamario@gmail.com.br
     ...                whatsapp=1199999999
     ...                business=Restaurante
+    
+    Remove Partner By Name               Pizza mario
 
-    ${headers}        Create Dictionary
-    ...                Content-Type=application/json
-    ...                auth_user=qa
-    ...                auth_password=ninja
-
-    ${filter}         Create Dictionary
-    ...                name=Pizza mario
-
-    Delete One        ${MONGO_URI}    ${filter}
-
-    ${response}        POST        ${BASE_URL}        
-    ...                json=${payload}        
-    ...                headers=${headers}
+    ${response}        POST Partner      ${payload}
 
     Status Should Be    201
-
-    Log To Console        ${response.json()}[partner_id]
-
-    ${results}     Find        ${MONGO_URI}        ${filter}
-    
-    Should Be Equal    ${response.json()}[partner_id]        ${results}[0][_id]
+    ${result}          Find Partner By Name                  Pizza mario
+    Should Be Equal    ${response.json()}[partner_id]        ${result}[_id]
