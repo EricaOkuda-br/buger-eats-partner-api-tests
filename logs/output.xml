@@ -1,93 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.10.6 on win32)" generated="20221010 21:38:39.622" rpa="false" schemaversion="3">
+<robot generator="Robot 5.0.1 (Python 3.10.6 on win32)" generated="20221010 22:02:56.249" rpa="false" schemaversion="3">
 <suite id="s1" name="Post" source="C:\Users\Erica Ocuda\OneDrive\Documentos\frameWork-Test\Robot-API-Expert\buger-eats-partner-api-tests\tests\post.robot">
 <test id="s1-t1" name="Should create a new partner" line="7">
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${payload}</var>
-<arg>name=Pizza mario</arg>
-<arg>email=pizzamario@gmail.com.br</arg>
-<arg>whatsapp=1199999999</arg>
-<arg>business=Restaurante</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20221010 21:38:39.844" level="INFO">${payload} = {'name': 'Pizza mario', 'email': 'pizzamario@gmail.com.br', 'whatsapp': '1199999999', 'business': 'Restaurante'}</msg>
-<status status="PASS" starttime="20221010 21:38:39.844" endtime="20221010 21:38:39.844"/>
+<kw name="Factory New Partner" library="partner">
+<var>${partner}</var>
+<msg timestamp="20221010 22:02:56.470" level="INFO">${partner} = {'name': 'Pizza mario', 'email': 'pizzamario@gmail.com.br', 'whatsapp': '1199999999', 'business': 'Restaurante'}</msg>
+<status status="PASS" starttime="20221010 22:02:56.470" endtime="20221010 22:02:56.470"/>
 </kw>
 <kw name="Remove Partner By Name" library="database">
-<arg>Pizza mario</arg>
+<arg>${partner}[name]</arg>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${filter}</var>
 <arg>name=${partner_name}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20221010 21:38:39.846" level="INFO">${filter} = {'name': 'Pizza mario'}</msg>
-<status status="PASS" starttime="20221010 21:38:39.846" endtime="20221010 21:38:39.846"/>
+<msg timestamp="20221010 22:02:56.470" level="INFO">${filter} = {'name': 'Pizza mario'}</msg>
+<status status="PASS" starttime="20221010 22:02:56.470" endtime="20221010 22:02:56.470"/>
 </kw>
 <kw name="Delete One" library="RobotMongoDBLibrary.Delete">
 <arg>${MONGO_URI}</arg>
 <arg>${filter}</arg>
-<status status="PASS" starttime="20221010 21:38:39.846" endtime="20221010 21:38:41.791"/>
+<status status="PASS" starttime="20221010 22:02:56.470" endtime="20221010 22:02:58.623"/>
 </kw>
-<status status="PASS" starttime="20221010 21:38:39.845" endtime="20221010 21:38:41.791"/>
+<status status="PASS" starttime="20221010 22:02:56.470" endtime="20221010 22:02:58.623"/>
 </kw>
 <kw name="POST Partner" library="services">
 <var>${response}</var>
-<arg>${payload}</arg>
+<arg>${partner}</arg>
 <kw name="POST" library="RequestsLibrary">
 <var>${response}</var>
 <arg>${BASE_URL}</arg>
 <arg>json=${payload}</arg>
 <arg>headers=${HEADERS}</arg>
 <doc>Sends a POST request.</doc>
-<msg timestamp="20221010 21:38:41.985" level="INFO">POST Request : url=http://localhost:3333/partners 
+<msg timestamp="20221010 22:02:58.807" level="INFO">POST Request : url=http://localhost:3333/partners 
  path_url=/partners 
  headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'auth_user': 'qa', 'auth_password': 'ninja', 'Content-Length': '112'} 
  body=b'{"name": "Pizza mario", "email": "pizzamario@gmail.com.br", "whatsapp": "1199999999", "business": "Restaurante"}' 
  </msg>
-<msg timestamp="20221010 21:38:41.985" level="INFO">POST Response : url=http://localhost:3333/partners 
+<msg timestamp="20221010 22:02:58.807" level="INFO">POST Response : url=http://localhost:3333/partners 
  status=201, reason=Created 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Expose-Headers': 'Authorization,auth_user,auth_password', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '41', 'ETag': 'W/"29-9aOgWYLvvmzoitQJw/6iptpARYA"', 'Date': 'Tue, 11 Oct 2022 01:38:41 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
- body={"partner_id":"6344c921b330217029fdb8cd"} 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Expose-Headers': 'Authorization,auth_user,auth_password', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '41', 'ETag': 'W/"29-ccuXR524SwytVdQEz7yFLsAN5V0"', 'Date': 'Tue, 11 Oct 2022 02:02:58 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"partner_id":"6344ced2b330217029fdb8d1"} 
  </msg>
-<msg timestamp="20221010 21:38:41.985" level="INFO">${response} = &lt;Response [201]&gt;</msg>
-<status status="PASS" starttime="20221010 21:38:41.791" endtime="20221010 21:38:41.985"/>
+<msg timestamp="20221010 22:02:58.807" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20221010 22:02:58.623" endtime="20221010 22:02:58.807"/>
 </kw>
-<msg timestamp="20221010 21:38:41.985" level="INFO">${response} = &lt;Response [201]&gt;</msg>
-<status status="PASS" starttime="20221010 21:38:41.791" endtime="20221010 21:38:41.985"/>
+<msg timestamp="20221010 22:02:58.807" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20221010 22:02:58.623" endtime="20221010 22:02:58.807"/>
 </kw>
 <kw name="Status Should Be" library="RequestsLibrary">
 <arg>201</arg>
 <doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" starttime="20221010 21:38:41.985" endtime="20221010 21:38:41.985"/>
+<status status="PASS" starttime="20221010 22:02:58.808" endtime="20221010 22:02:58.808"/>
 </kw>
 <kw name="Find Partner By Name" library="database">
 <var>${result}</var>
-<arg>Pizza mario</arg>
+<arg>${partner}[name]</arg>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${filter}</var>
 <arg>name=${partner_name}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20221010 21:38:41.985" level="INFO">${filter} = {'name': 'Pizza mario'}</msg>
-<status status="PASS" starttime="20221010 21:38:41.985" endtime="20221010 21:38:41.985"/>
+<msg timestamp="20221010 22:02:58.809" level="INFO">${filter} = {'name': 'Pizza mario'}</msg>
+<status status="PASS" starttime="20221010 22:02:58.809" endtime="20221010 22:02:58.809"/>
 </kw>
 <kw name="Find" library="RobotMongoDBLibrary.Find">
 <var>${results}</var>
 <arg>${MONGO_URI}</arg>
 <arg>${filter}</arg>
-<msg timestamp="20221010 21:38:43.688" level="INFO">${results} = [{'_id': '6344c921b330217029fdb8cd', 'name': 'Pizza mario', 'email': 'pizzamario@gmail.com.br', 'whatsapp': '1199999999', 'business': 'Restaurante', 'active': False, 'created_at': datetime.datetime(20...</msg>
-<status status="PASS" starttime="20221010 21:38:41.985" endtime="20221010 21:38:43.688"/>
+<msg timestamp="20221010 22:03:00.435" level="INFO">${results} = [{'_id': '6344ced2b330217029fdb8d1', 'name': 'Pizza mario', 'email': 'pizzamario@gmail.com.br', 'whatsapp': '1199999999', 'business': 'Restaurante', 'active': False, 'created_at': datetime.datetime(20...</msg>
+<status status="PASS" starttime="20221010 22:02:58.809" endtime="20221010 22:03:00.435"/>
 </kw>
-<msg timestamp="20221010 21:38:43.688" level="INFO">${result} = {'_id': '6344c921b330217029fdb8cd', 'name': 'Pizza mario', 'email': 'pizzamario@gmail.com.br', 'whatsapp': '1199999999', 'business': 'Restaurante', 'active': False, 'created_at': datetime.datetime(202...</msg>
-<status status="PASS" starttime="20221010 21:38:41.985" endtime="20221010 21:38:43.688"/>
+<msg timestamp="20221010 22:03:00.435" level="INFO">${result} = {'_id': '6344ced2b330217029fdb8d1', 'name': 'Pizza mario', 'email': 'pizzamario@gmail.com.br', 'whatsapp': '1199999999', 'business': 'Restaurante', 'active': False, 'created_at': datetime.datetime(202...</msg>
+<status status="PASS" starttime="20221010 22:02:58.808" endtime="20221010 22:03:00.435"/>
 </kw>
 <kw name="Should Be Equal" library="BuiltIn">
 <arg>${response.json()}[partner_id]</arg>
 <arg>${result}[_id]</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20221010 21:38:43.689" endtime="20221010 21:38:43.689"/>
+<status status="PASS" starttime="20221010 22:03:00.435" endtime="20221010 22:03:00.435"/>
 </kw>
-<status status="PASS" starttime="20221010 21:38:39.843" endtime="20221010 21:38:43.690"/>
+<status status="PASS" starttime="20221010 22:02:56.470" endtime="20221010 22:03:00.451"/>
 </test>
 <doc>POST /partners</doc>
-<status status="PASS" starttime="20221010 21:38:39.622" endtime="20221010 21:38:43.691"/>
+<status status="PASS" starttime="20221010 22:02:56.249" endtime="20221010 22:03:00.451"/>
 </suite>
 <statistics>
 <total>
