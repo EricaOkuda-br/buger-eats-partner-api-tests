@@ -1,216 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.10.6 on win32)" generated="20221012 15:34:04.806" rpa="false" schemaversion="3">
-<suite id="s1" name="Get" source="C:\Users\Erica Ocuda\OneDrive\Documentos\frameWork-Test\Robot-API-Expert\buger-eats-partner-api-tests\tests\get.robot">
-<test id="s1-t1" name="Should return a partner list" line="8">
-<kw name="Factory Partner List" library="partner">
-<var>${partners}</var>
-<msg timestamp="20221012 15:34:05.021" level="INFO">${partners} = [{'name': 'Casa do Mineiro', 'email': 'minerio123@gmail.com', 'whatsapp': '11999999111', 'business': 'Restaurante'}, {'name': 'Mercado do huck', 'email': 'mercadoHuck@gmail.com', 'whatsapp': '11999997...</msg>
-<status status="PASS" starttime="20221012 15:34:05.021" endtime="20221012 15:34:05.021"/>
+<robot generator="Robot 5.0.1 (Python 3.10.6 on win32)" generated="20221012 16:00:17.097" rpa="false" schemaversion="3">
+<suite id="s1" name="Put" source="C:\Users\Erica Ocuda\OneDrive\Documentos\frameWork-Test\Robot-API-Expert\buger-eats-partner-api-tests\tests\put.robot">
+<test id="s1-t1" name="Should enable a partner" line="7">
+<kw name="Factory Enable Partner" library="partner">
+<var>${partner}</var>
+<msg timestamp="20221012 16:00:17.318" level="INFO">${partner} = {'name': 'loja MM', 'email': 'lojasMM@gmail.com.br', 'whatsapp': '1199999999', 'business': 'Conveniência'}</msg>
+<status status="PASS" starttime="20221012 16:00:17.318" endtime="20221012 16:00:17.318"/>
 </kw>
-<for flavor="IN">
-<var>${p}</var>
-<value>@{partners}</value>
-<iter>
-<var name="${p}">{'name': 'Casa do Mineiro', 'email': 'minerio123@gmail.com', 'whatsapp': '11999999111', 'business': 'Restaurante'}</var>
-<kw name="POST Partner" library="services">
-<arg>${p}</arg>
-<kw name="POST" library="RequestsLibrary">
-<var>${response}</var>
-<arg>${BASE_URL}</arg>
-<arg>json=${payload}</arg>
-<arg>headers=${HEADERS}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request.</doc>
-<msg timestamp="20221012 15:34:05.235" level="INFO">POST Request : url=http://localhost:3333/partners 
- path_url=/partners 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'auth_user': 'qa', 'auth_password': 'ninja', 'Content-Length': '114'} 
- body=b'{"name": "Casa do Mineiro", "email": "minerio123@gmail.com", "whatsapp": "11999999111", "business": "Restaurante"}' 
- </msg>
-<msg timestamp="20221012 15:34:05.235" level="INFO">POST Response : url=http://localhost:3333/partners 
- status=409, reason=Conflict 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Expose-Headers': 'Authorization,auth_user,auth_password', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '36', 'ETag': 'W/"24-npRjBxR/ioA1Ds6xvIHfcGoYoY4"', 'Date': 'Wed, 12 Oct 2022 19:34:05 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
- body={"message":"Duplicate company name"} 
- </msg>
-<msg timestamp="20221012 15:34:05.235" level="INFO">${response} = &lt;Response [409]&gt;</msg>
-<status status="PASS" starttime="20221012 15:34:05.022" endtime="20221012 15:34:05.235"/>
-</kw>
-<status status="PASS" starttime="20221012 15:34:05.021" endtime="20221012 15:34:05.236"/>
-</kw>
-<status status="PASS" starttime="20221012 15:34:05.021" endtime="20221012 15:34:05.236"/>
-</iter>
-<iter>
-<var name="${p}">{'name': 'Mercado do huck', 'email': 'mercadoHuck@gmail.com', 'whatsapp': '11999997879', 'business': 'Supermercado'}</var>
-<kw name="POST Partner" library="services">
-<arg>${p}</arg>
-<kw name="POST" library="RequestsLibrary">
-<var>${response}</var>
-<arg>${BASE_URL}</arg>
-<arg>json=${payload}</arg>
-<arg>headers=${HEADERS}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request.</doc>
-<msg timestamp="20221012 15:34:05.432" level="INFO">POST Request : url=http://localhost:3333/partners 
- path_url=/partners 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'auth_user': 'qa', 'auth_password': 'ninja', 'Content-Length': '116'} 
- body=b'{"name": "Mercado do huck", "email": "mercadoHuck@gmail.com", "whatsapp": "11999997879", "business": "Supermercado"}' 
- </msg>
-<msg timestamp="20221012 15:34:05.432" level="INFO">POST Response : url=http://localhost:3333/partners 
- status=409, reason=Conflict 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Expose-Headers': 'Authorization,auth_user,auth_password', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '36', 'ETag': 'W/"24-npRjBxR/ioA1Ds6xvIHfcGoYoY4"', 'Date': 'Wed, 12 Oct 2022 19:34:05 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
- body={"message":"Duplicate company name"} 
- </msg>
-<msg timestamp="20221012 15:34:05.432" level="INFO">${response} = &lt;Response [409]&gt;</msg>
-<status status="PASS" starttime="20221012 15:34:05.236" endtime="20221012 15:34:05.432"/>
-</kw>
-<status status="PASS" starttime="20221012 15:34:05.236" endtime="20221012 15:34:05.432"/>
-</kw>
-<status status="PASS" starttime="20221012 15:34:05.236" endtime="20221012 15:34:05.432"/>
-</iter>
-<iter>
-<var name="${p}">{'name': 'Padaria do Tonny', 'email': 'padocaTonny@gmail.com', 'whatsapp': '11999997878', 'business': 'Conveniência'}</var>
-<kw name="POST Partner" library="services">
-<arg>${p}</arg>
-<kw name="POST" library="RequestsLibrary">
-<var>${response}</var>
-<arg>${BASE_URL}</arg>
-<arg>json=${payload}</arg>
-<arg>headers=${HEADERS}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request.</doc>
-<msg timestamp="20221012 15:34:05.625" level="INFO">POST Request : url=http://localhost:3333/partners 
- path_url=/partners 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'auth_user': 'qa', 'auth_password': 'ninja', 'Content-Length': '122'} 
- body=b'{"name": "Padaria do Tonny", "email": "padocaTonny@gmail.com", "whatsapp": "11999997878", "business": "Conveni\\u00eancia"}' 
- </msg>
-<msg timestamp="20221012 15:34:05.625" level="INFO">POST Response : url=http://localhost:3333/partners 
- status=409, reason=Conflict 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Expose-Headers': 'Authorization,auth_user,auth_password', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '36', 'ETag': 'W/"24-npRjBxR/ioA1Ds6xvIHfcGoYoY4"', 'Date': 'Wed, 12 Oct 2022 19:34:05 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
- body={"message":"Duplicate company name"} 
- </msg>
-<msg timestamp="20221012 15:34:05.625" level="INFO">${response} = &lt;Response [409]&gt;</msg>
-<status status="PASS" starttime="20221012 15:34:05.433" endtime="20221012 15:34:05.626"/>
-</kw>
-<status status="PASS" starttime="20221012 15:34:05.432" endtime="20221012 15:34:05.626"/>
-</kw>
-<status status="PASS" starttime="20221012 15:34:05.432" endtime="20221012 15:34:05.626"/>
-</iter>
-<status status="PASS" starttime="20221012 15:34:05.021" endtime="20221012 15:34:05.626"/>
-</for>
-<kw name="GET Partners" library="services">
-<var>${response}</var>
-<kw name="GET" library="RequestsLibrary">
-<var>${response}</var>
-<arg>${BASE_URL}</arg>
-<arg>headers=${HEADERS}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a GET request.</doc>
-<msg timestamp="20221012 15:34:05.820" level="INFO">GET Request : url=http://localhost:3333/partners 
- path_url=/partners 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'auth_user': 'qa', 'auth_password': 'ninja'} 
- body=None 
- </msg>
-<msg timestamp="20221012 15:34:05.820" level="INFO">GET Response : url=http://localhost:3333/partners 
- status=200, reason=OK 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Expose-Headers': 'Authorization,auth_user,auth_password', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '715', 'ETag': 'W/"2cb-rhczJZdLaFUQJf8qBVs7atFVlMg"', 'Date': 'Wed, 12 Oct 2022 19:34:05 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
- body=[{"_id":"634712d9290099a2b486d7a5","name":"Padaria do Tonny","email":"padocaTonny@gmail.com","whatsapp":"11999997878","business":"Conveniência","active":false,"created_at":"2022-10-12T19:17:45.947Z","updated_at":"2022-10-12T19:17:45.947Z"},{"_id":"634712d9290099a2b486d7a3","name":"Mercado do huck","email":"mercadoHuck@gmail.com","whatsapp":"11999997879","business":"Supermercado","active":false,"created_at":"2022-10-12T19:17:45.748Z","updated_at":"2022-10-12T19:17:45.748Z"},{"_id":"634712d9290099a2b486d7a1","name":"Casa do Mineiro","email":"minerio123@gmail.com","whatsapp":"11999999111","business":"Restaurante","active":false,"created_at":"2022-10-12T19:17:45.542Z","updated_at":"2022-10-12T19:17:45.542Z"}] 
- </msg>
-<msg timestamp="20221012 15:34:05.820" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221012 15:34:05.626" endtime="20221012 15:34:05.820"/>
-</kw>
-<msg timestamp="20221012 15:34:05.820" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221012 15:34:05.626" endtime="20221012 15:34:05.820"/>
-</kw>
-<kw name="Status Should Be" library="RequestsLibrary">
-<arg>200</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" starttime="20221012 15:34:05.820" endtime="20221012 15:34:05.821"/>
-</kw>
-<kw name="Get Length" library="BuiltIn">
-<var>${size}</var>
-<arg>${response.json()}</arg>
-<doc>Returns and logs the length of the given item as an integer.</doc>
-<msg timestamp="20221012 15:34:05.822" level="INFO">Length is 3</msg>
-<msg timestamp="20221012 15:34:05.822" level="INFO">${size} = 3</msg>
-<status status="PASS" starttime="20221012 15:34:05.821" endtime="20221012 15:34:05.822"/>
-</kw>
-<kw name="Should Be True" library="BuiltIn">
-<arg>${size} &gt; 0</arg>
-<doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20221012 15:34:05.822" endtime="20221012 15:34:05.822"/>
-</kw>
-<status status="PASS" starttime="20221012 15:34:05.020" endtime="20221012 15:34:05.822"/>
-</test>
-<test id="s1-t2" name="Should search partner by name" line="23">
-<kw name="Search Partner" library="services">
-<var>${response}</var>
-<arg>Mercado do huck</arg>
+<kw name="Remove Partner By Name" library="database">
+<arg>${partner}[name]</arg>
 <kw name="Create Dictionary" library="BuiltIn">
-<var>${query}</var>
-<arg>name=${name}</arg>
+<var>${filter}</var>
+<arg>name=${partner_name}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20221012 15:34:05.823" level="INFO">${query} = {'name': 'Mercado do huck'}</msg>
-<status status="PASS" starttime="20221012 15:34:05.823" endtime="20221012 15:34:05.823"/>
+<msg timestamp="20221012 16:00:17.319" level="INFO">${filter} = {'name': 'loja MM'}</msg>
+<status status="PASS" starttime="20221012 16:00:17.318" endtime="20221012 16:00:17.319"/>
 </kw>
-<kw name="GET" library="RequestsLibrary">
+<kw name="Delete One" library="RobotMongoDBLibrary.Delete">
+<arg>${MONGO_URI}</arg>
+<arg>${filter}</arg>
+<status status="PASS" starttime="20221012 16:00:17.319" endtime="20221012 16:00:19.106"/>
+</kw>
+<status status="PASS" starttime="20221012 16:00:17.318" endtime="20221012 16:00:19.106"/>
+</kw>
+<kw name="POST Partner" library="services">
+<var>${response}</var>
+<arg>${partner}</arg>
+<kw name="POST" library="RequestsLibrary">
 <var>${response}</var>
 <arg>${BASE_URL}</arg>
-<arg>params=${query}</arg>
+<arg>json=${payload}</arg>
 <arg>headers=${HEADERS}</arg>
 <arg>expected_status=any</arg>
-<doc>Sends a GET request.</doc>
-<msg timestamp="20221012 15:34:06.016" level="INFO">GET Request : url=http://localhost:3333/partners?name=Mercado+do+huck 
- path_url=/partners?name=Mercado+do+huck 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'auth_user': 'qa', 'auth_password': 'ninja'} 
+<doc>Sends a POST request.</doc>
+<msg timestamp="20221012 16:00:19.304" level="INFO">POST Request : url=http://localhost:3333/partners 
+ path_url=/partners 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'auth_user': 'qa', 'auth_password': 'ninja', 'Content-Length': '111'} 
+ body=b'{"name": "loja MM", "email": "lojasMM@gmail.com.br", "whatsapp": "1199999999", "business": "Conveni\\u00eancia"}' 
+ </msg>
+<msg timestamp="20221012 16:00:19.304" level="INFO">POST Response : url=http://localhost:3333/partners 
+ status=201, reason=Created 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Expose-Headers': 'Authorization,auth_user,auth_password', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '41', 'ETag': 'W/"29-UZzVznq2Ht4z64BbLR7vnvy9dIU"', 'Date': 'Wed, 12 Oct 2022 20:00:19 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"partner_id":"63471cd3290099a2b486d7c2"} 
+ </msg>
+<msg timestamp="20221012 16:00:19.304" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20221012 16:00:19.107" endtime="20221012 16:00:19.304"/>
+</kw>
+<msg timestamp="20221012 16:00:19.304" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20221012 16:00:19.106" endtime="20221012 16:00:19.304"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${partner_id}</var>
+<arg>${response.json()}[partner_id]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221012 16:00:19.305" level="INFO">${partner_id} = 63471cd3290099a2b486d7c2</msg>
+<status status="PASS" starttime="20221012 16:00:19.304" endtime="20221012 16:00:19.305"/>
+</kw>
+<kw name="Enable Partner" library="services">
+<var>${response}</var>
+<arg>${partner_id}</arg>
+<kw name="PUT" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${BASE_URL}/${partner_id}/enable</arg>
+<arg>headers=${HEADERS}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a PUT request.</doc>
+<msg timestamp="20221012 16:00:19.501" level="INFO">PUT Request : url=http://localhost:3333/partners/63471cd3290099a2b486d7c2/enable 
+ path_url=/partners/63471cd3290099a2b486d7c2/enable 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'auth_user': 'qa', 'auth_password': 'ninja', 'Content-Length': '0'} 
  body=None 
  </msg>
-<msg timestamp="20221012 15:34:06.016" level="INFO">GET Response : url=http://localhost:3333/partners?name=Mercado+do+huck 
+<msg timestamp="20221012 16:00:19.501" level="INFO">PUT Response : url=http://localhost:3333/partners/63471cd3290099a2b486d7c2/enable 
  status=200, reason=OK 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Expose-Headers': 'Authorization,auth_user,auth_password', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '239', 'ETag': 'W/"ef-LHfpfUabZbTPau/D4l7drGgfrDo"', 'Date': 'Wed, 12 Oct 2022 19:34:06 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
- body=[{"_id":"634712d9290099a2b486d7a3","name":"Mercado do huck","email":"mercadoHuck@gmail.com","whatsapp":"11999997879","business":"Supermercado","active":false,"created_at":"2022-10-12T19:17:45.748Z","updated_at":"2022-10-12T19:17:45.748Z"}] 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Expose-Headers': 'Authorization,auth_user,auth_password', 'Date': 'Wed, 12 Oct 2022 20:00:19 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5', 'Content-Length': '0'} 
+ body=None 
  </msg>
-<msg timestamp="20221012 15:34:06.016" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221012 15:34:05.823" endtime="20221012 15:34:06.016"/>
+<msg timestamp="20221012 16:00:19.501" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20221012 16:00:19.306" endtime="20221012 16:00:19.501"/>
 </kw>
-<msg timestamp="20221012 15:34:06.016" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221012 15:34:05.823" endtime="20221012 15:34:06.016"/>
+<msg timestamp="20221012 16:00:19.501" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20221012 16:00:19.306" endtime="20221012 16:00:19.501"/>
 </kw>
 <kw name="Status Should Be" library="RequestsLibrary">
 <arg>200</arg>
 <doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" starttime="20221012 15:34:06.017" endtime="20221012 15:34:06.017"/>
+<status status="PASS" starttime="20221012 16:00:19.502" endtime="20221012 16:00:19.502"/>
 </kw>
-<kw name="Get Length" library="BuiltIn">
-<var>${size}</var>
-<arg>${response.json()}</arg>
-<doc>Returns and logs the length of the given item as an integer.</doc>
-<msg timestamp="20221012 15:34:06.018" level="INFO">Length is 1</msg>
-<msg timestamp="20221012 15:34:06.018" level="INFO">${size} = 1</msg>
-<status status="PASS" starttime="20221012 15:34:06.017" endtime="20221012 15:34:06.018"/>
-</kw>
-<kw name="Should Be True" library="BuiltIn">
-<arg>${size} == 1</arg>
-<doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20221012 15:34:06.018" endtime="20221012 15:34:06.018"/>
-</kw>
-<kw name="Should Be Equal" library="BuiltIn">
-<arg>${response.json()}[0][name]</arg>
-<arg>Mercado do huck</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20221012 15:34:06.019" endtime="20221012 15:34:06.019"/>
-</kw>
-<status status="PASS" starttime="20221012 15:34:05.823" endtime="20221012 15:34:06.019"/>
+<status status="PASS" starttime="20221012 16:00:17.317" endtime="20221012 16:00:19.502"/>
 </test>
-<doc>GET /partners</doc>
-<status status="PASS" starttime="20221012 15:34:04.807" endtime="20221012 15:34:06.020"/>
+<doc>POST /partners</doc>
+<status status="PASS" starttime="20221012 16:00:17.098" endtime="20221012 16:00:19.504"/>
 </suite>
 <statistics>
 <total>
-<stat pass="2" fail="0" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="2" fail="0" skip="0" id="s1" name="Get">Get</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Put">Put</stat>
 </suite>
 </statistics>
 <errors>

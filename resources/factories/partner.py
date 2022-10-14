@@ -49,3 +49,14 @@ def factory_partner_list():
         }
     ]
     return p_list
+
+def factory_enable_partner():
+    partner = {
+        
+            'name': 'loja MM',
+            'email': 'lojasMM@gmail.com.br',
+            'whatsapp':  '1199999999',
+             'business': 'Conveniência'
+        
+    }
+    return partner
