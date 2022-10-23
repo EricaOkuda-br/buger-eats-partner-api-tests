@@ -20,9 +20,8 @@ Should return duplicate company name
         [Tags]        bugs
     
         ${partner}          Factory Dup Name
-        Remove Partner By Name               ${partner}[name]
-        POST Partner        ${partner}
-
+        
+        Create a new partner    ${partner}
 
         ${response}         POST Partner        ${partner}
         Status Should Be    409
