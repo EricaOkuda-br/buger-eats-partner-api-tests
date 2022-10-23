@@ -10,6 +10,18 @@ def factory_new_partner():
 
     return partner
 
+def factory_404_partner():
+    partner = {
+        
+            'name': 'Frango Ze',
+            'email': 'frangoze@gmail.com.br',
+            'whatsapp':  '1192999979',
+             'business': 'Restaurante'
+        
+    }
+
+    return partner
+
 def factory_dup_name():
     partner = {
         
